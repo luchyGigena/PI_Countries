@@ -1,0 +1,26 @@
+.card {
+  border: black solid 1px;
+  border-radius: 10%;
+  width: 220px;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
+}
+.card:hover {
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  border: 1px solid white;
+}
+
+.card img {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10%;
+  filter: grayscale(60%);
+}
+.card img:hover {
+  filter: grayscale(0%);
+}

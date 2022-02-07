@@ -15,6 +15,7 @@ export const POST_ACTIVITY = "POST_ACTIVITY"
 export function getAllCountries(){
     return async function(dispach){
         let response = await axios.get("http://localhost:3001/countries")
+        //console.log(response)
          dispach({
             type: GET_COUNTRIES, 
             payload: response.data // lo que me va a cargar
