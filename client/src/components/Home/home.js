@@ -7,7 +7,7 @@ import {getAllCountries} from '../../actions'
 //import components
 
 import Cards from '../Cards/cards';
-import Paginate from '../Paginate/paginate.js';
+import Paginado from '../Paginate/paginado.js';
 import Styles from './home.module.css';
 
 
@@ -49,7 +49,7 @@ export default  function Home() {
       <button onClick={e => {handleClick(e)}}>  Volver a cargar Paises.  </button>
  
       <div className={Styles.paginate}>
-        <Paginate
+        <Paginado
         countriesPerPage={countriesPerPage} 
         allCountries={allCountries.length} 
         paginate={paginate}
