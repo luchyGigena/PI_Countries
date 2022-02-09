@@ -12,18 +12,13 @@ for (let i= 1 ; i<=Math.ceil(allCountries/countriesPerPage); i++){
         //resulta un arreglo de numeros 
     }
 
-    console.log('que tiene page despues del for',pageNumbers)
+    //console.log('que tiene page despues del for',pageNumbers)
 
   return(
-     
      <nav>   
-
            <ul className={Styles.paginate}>
                 
                {pageNumbers && pageNumbers.map(number => 
-                   
-                  
-                
                 <li className={Styles.number} key={number}>
                     <button className={Styles.btnPaginate} onClick={() => paginate(number)}> {number}</button>
                 </li>

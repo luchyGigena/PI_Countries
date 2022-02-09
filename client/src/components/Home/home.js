@@ -8,6 +8,8 @@ import {getAllCountries} from '../../actions'
 
 import Cards from '../Cards/cards';
 import Paginado from '../Paginate/paginado.js';
+import FiltroPorNombre from '../FiltroPorNombre/FiltroPorNombre';
+import FiltroPorContinente from '../FiltroPorContinente/FiltroPorContinente';
 import Styles from './home.module.css';
 
 
@@ -17,7 +19,18 @@ export default  function Home() {
    
     //paginado
     const [currentPage, setCurrentPage] = useState(1) //pagina1 /pagina actual
-    const [countriesPerPage, setCountriesPerPage] = useState(9) //paises por page.
+    //const [countriesPerPage, setCountriesPerPage] = useState(9) //paises por page.
+   let countriesPerPage = 0;
+    if(currentPage === 1) {
+      countriesPerPage = 9;
+    }
+    if(currentPage >= 2){
+      countriesPerPage =10
+    }
+
+
+
+
     const indexOfLastCountry = currentPage * countriesPerPage // 9
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage // 0
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
@@ -26,7 +39,10 @@ export default  function Home() {
       setCurrentPage(pageNumber)
     }
 
-    //console.log('que tiene',paginate )
+   
+
+
+
     // traigo paises cuando el componente se monta
     useEffect(()=>{
          dispatch(getAllCountries())  // esto me reemplaza el mapdispach
@@ -34,7 +50,7 @@ export default  function Home() {
 
 
 
-     //para mi boton de volver a cargar paises
+     // boton de volver a cargar paises
      function handleClick(e){
         e.preventDefault();
         dispatch(getAllCountries());
@@ -47,13 +63,10 @@ export default  function Home() {
       <h1>Soy La pagina Principal de mi App Countries </h1>
 
       <button onClick={e => {handleClick(e)}}>  Volver a cargar Paises.  </button>
- 
-      <div className={Styles.paginate}>
-        <Paginado
-        countriesPerPage={countriesPerPage} 
-        allCountries={allCountries.length} 
-        paginate={paginate}
-        />
+      <FiltroPorNombre />
+      <FiltroPorContinente setCurrentPage={setCurrentPage}/>
+      <div className={Styles.paginate}> 
+        <Paginado countriesPerPage={countriesPerPage} allCountries={allCountries.length} paginate={paginate}/> 
       </div>
 
        <div >

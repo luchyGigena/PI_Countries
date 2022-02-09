@@ -23,3 +23,26 @@ export function getAllCountries(){
         })
     }
 }
+
+export function orderByName(payload){ // payload es el value que me va a llegar desde el componente
+    return {
+        type: ORDER_BY_NAME,
+        payload
+    }
+}
+
+export function FilterContinent(payload){
+    return{
+        type: FILTER_CONTINENT,
+        payload
+    }
+}
+
+export function filterActivity(payload){
+    return{
+        type: FILTER_ACTIVITY,
+        payload
+
+    }
+
+}
