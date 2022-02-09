@@ -2,13 +2,15 @@ import React from 'react';
 import { orderByName } from '../../actions/index.js';
 import { useDispatch } from 'react-redux';
 
-export default function FiltroPorNombre() {
+export default function FiltroPorNombre({setCurrentPage , setOrden}) {
   const dispatch = useDispatch() 
 
 
   function handleFilterName(e){
-   // e.preventDefault;
+    e.preventDefault();
     dispatch(orderByName(e.target.value))
+    setCurrentPage(1)
+    setOrden(`ordenado ${e.target.value}`)
   
   }
 

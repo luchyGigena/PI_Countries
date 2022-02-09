@@ -5,7 +5,7 @@ import {GET_COUNTRIES, FILTER_CONTINENT, FILTER_ACTIVITY, GET_ACTIVITIES, ORDER_
 
 const initialState = {
     countries :[],
-    allCountries: []
+    allCountries: [] // lo tengo de soporte paa que siempre tenga tops los paises
 }
 
 function rootReducer(state = initialState, {type, payload}){
@@ -17,9 +17,9 @@ function rootReducer(state = initialState, {type, payload}){
                 countries: payload ,// mandame todo lo que te mande la accion GET_COUNTRIES
                 allCountries: payload
             }
-            case ORDER_BY_NAME:
-             const orderByName=payload === 'ascending' ?
-             state.countries.sort(function(a,b){
+        case ORDER_BY_NAME:
+             const orderByName= payload === 'ascending' ?
+             state.countries.sort(function(a,b){ //accede a mi estado countries y hacele un sort
                  if(a.name > b.name){
                      return 1 // los invierte
                  }
@@ -39,17 +39,42 @@ function rootReducer(state = initialState, {type, payload}){
              })
                 return{
                     ...state,
-                    countries: orderByName,
+                    countries: orderByName
                 }
 
-             case FILTER_CONTINENT:
+        case FILTER_CONTINENT:
                  const paisesTodos = state.allCountries
                  const  continentFilter = payload === 'All' ? paisesTodos : paisesTodos.filter(c => c.continent === payload)
              return {
                 ...state,
                 countries: continentFilter
-             }  
-             default:
+             } 
+             case ORDER_BY_POPULATION:
+                 const orderByPopulation = payload === 'Lowest' ?
+                 state.allCountries.sort(function(a,b){
+                     if(a.population > b.papulation){
+                         return 1
+                     }
+                     if(b.population > a.population){
+                         return -1
+                     }
+                     return 0
+                 }) :
+                 state.allCountries.sort(function(a,b){
+                     if(a.population > b.population){
+                         return -1
+                     }
+                     if(b.population > a.population){
+                         return 1
+                     }
+                     return 0
+                 })
+                 return{
+                     ...state,
+                     allCountries: orderByPopulation   
+                 }
+                
+                 default:
                 return state;
 
            

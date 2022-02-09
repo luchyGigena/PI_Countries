@@ -24,7 +24,7 @@ export function getAllCountries(){
     }
 }
 
-export function orderByName(payload){ // payload es el value que me va a llegar desde el componente
+export function orderByName(payload){ // payload es el value que me va a llegar desde el componente /para filtro az za
     return {
         type: ORDER_BY_NAME,
         payload
@@ -38,11 +38,10 @@ export function FilterContinent(payload){
     }
 }
 
-export function filterActivity(payload){
+export function orderByPopulation(payload){
     return{
-        type: FILTER_ACTIVITY,
+        type: ORDER_BY_POPULATION,
         payload
-
     }
-
 }
+
