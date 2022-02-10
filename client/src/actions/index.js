@@ -45,3 +45,37 @@ export function orderByPopulation(payload){
     }
 }
 
+export  function getNameCoutries (name){ //o name, porque es lo que voy a buscar
+    return async function (dispach){
+        try{
+            let res = await axios.get('http://localhost:3001/countries?name=' + name);
+            return dispach({
+            type: GET_NAME_CUNTRIES,  
+            payload : res.data //es lo que me devuelve x ruta una vez que asigno name
+        }) 
+        }catch(err){
+            console.log(err)
+        }
+    }
+}
+
+export function getActivities (){
+    return async function(dispach){
+        let res = await axios.get('http://localhost:3001/activities');
+        return dispach({
+            type: GET_ACTIVITIES,
+            payload: res.data
+        })
+    }
+}
+
+export  function postActivity (payload) { //me trae todo lo que llena el user
+    return async function (dispach){
+        let res = await axios.post('http://localhost:3001/activities', payload);
+        return dispach({
+            type: POST_ACTIVITY,
+            payload: res
+        })
+    }
+}
+

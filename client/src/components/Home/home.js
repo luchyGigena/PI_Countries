@@ -8,6 +8,7 @@ import {getAllCountries} from '../../actions'
 
 import Cards from '../Cards/cards';
 import Paginado from '../Paginate/paginado.js';
+import SearchBar from '../SearchBar/SearchBar';
 import FiltroPorNombre from '../FiltroPorNombre/FiltroPorNombre';
 import FiltroPorPoblacion from '../FiltroPorPoblacion/FiltroPorPoblacion';
 import FiltroPorContinente from '../FiltroPorContinente/FiltroPorContinente';
@@ -55,8 +56,8 @@ export default  function Home() {
   return( 
     <div>
         <Link to='/activities'> Crear Actividad </Link> 
-      <h1>Soy La pagina Principal de mi App Countries </h1>
-
+        <h1>Soy La pagina Principal de mi App Countries </h1>
+      <SearchBar />
       <button onClick={e => {handleClick(e)}}>  Volver a cargar Paises.  </button>
       <FiltroPorNombre setCurrentPage={setCurrentPage} setOrden={setOrden}/>
       <FiltroPorContinente setCurrentPage={setCurrentPage}/>

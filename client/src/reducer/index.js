@@ -1,11 +1,12 @@
 import React from "react";
-import {GET_COUNTRIES, FILTER_CONTINENT, FILTER_ACTIVITY, GET_ACTIVITIES, ORDER_BY_NAME, ORDER_BY_POPULATION, GET_NAME_COUNTRIES, POST_ACTIVITY, GET_COUNTRY_DETAIL} from "../actions/index";
+import {GET_COUNTRIES, FILTER_CONTINENT, FILTER_ACTIVITY, GET_ACTIVITIES, ORDER_BY_NAME, ORDER_BY_POPULATION, GET_NAME_CUNTRIES, POST_ACTIVITY, GET_COUNTRY_DETAIL} from "../actions/index";
 
 
 
 const initialState = {
     countries :[],
-    allCountries: [] // lo tengo de soporte paa que siempre tenga tops los paises
+    allCountries: [], // lo tengo de soporte paa que siempre tenga tops los paises
+    activities: []
 }
 
 function rootReducer(state = initialState, {type, payload}){
@@ -73,8 +74,26 @@ function rootReducer(state = initialState, {type, payload}){
                      ...state,
                      allCountries: orderByPopulation   
                  }
+            case GET_NAME_CUNTRIES:{
+                return{
+                    ...state,
+                    countries: payload
+                }
+            }  
+            case GET_ACTIVITIES:{
+                return{
+                    ...state,
+                    activities: payload
+                }
+            }   
+
+            case POST_ACTIVITY:{
+                return{
+                    ...state // solo me devuelve el estado como esta.
+                }
+            }
                 
-                 default:
+            default:
                 return state;
 
            
