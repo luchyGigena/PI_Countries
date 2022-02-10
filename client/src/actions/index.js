@@ -79,3 +79,11 @@ export  function postActivity (payload) { //me trae todo lo que llena el user
     }
 }
 
+
+export function filterActivity(payload){
+    return{
+        type: FILTER_ACTIVITY,
+        payload
+    }
+}
+

@@ -92,6 +92,24 @@ function rootReducer(state = initialState, {type, payload}){
                     ...state // solo me devuelve el estado como esta.
                 }
             }
+            case FILTER_ACTIVITY:
+                const countriesAll = state.allCountries
+                let stateActivity=[]
+                for( let element of countriesAll){
+                    if(element.activities.length !== 0){
+                        for(let el of element.activities){
+                            if(el.name === payload){
+                                stateActivity = [...stateActivity, element]
+                            }
+                        }
+                    }
+                }
+            
+            console.log('state activity', stateActivity)
+            return{
+                ...state,
+                countries: stateActivity
+            }
                 
             default:
                 return state;

@@ -88,15 +88,18 @@ router.get('/countries/:idPais', async(req, res)=>{
     }
 })
 
+
+
+//POST
 router.post('/activities', async(req, res)=> {
-    const {name, dificultad , duracion, temporada, inputCountries} = req.body;
+    const {name, dificultad , duracion, temporada, countries} = req.body;
 
     try{
 
-       if(name && dificultad && duracion && temporada && inputCountries){
+       if(name && dificultad && duracion && temporada && countries){
          const dbCountries = await Country.findAll({
              where :{
-                 id: inputCountries,
+                 name: countries,
              }
          })
 
@@ -106,7 +109,7 @@ router.post('/activities', async(req, res)=> {
                     dificultad,
                     duracion,
                     temporada,
-                    inputCountries
+                    countries
                 })
                  activityCreated.addCountries(dbCountries)
                 res.status(200).send(activityCreated)
