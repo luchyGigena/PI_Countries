@@ -87,3 +87,18 @@ export function filterActivity(payload){
     }
 }
 
+export function getDetailCountry(id){
+    return async function (dispach){
+        try{
+            let res = await axios.get(`http://localhost:3001/countries/${id}`);
+            return dispach({
+                type: GET_COUNTRY_DETAIL,
+                payload: res.data
+            })
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+}
+

@@ -6,7 +6,8 @@ import {GET_COUNTRIES, FILTER_CONTINENT, FILTER_ACTIVITY, GET_ACTIVITIES, ORDER_
 const initialState = {
     countries :[],
     allCountries: [], // lo tengo de soporte paa que siempre tenga tops los paises
-    activities: []
+    activities: [],
+    countryDetail: []
 }
 
 function rootReducer(state = initialState, {type, payload}){
@@ -50,7 +51,7 @@ function rootReducer(state = initialState, {type, payload}){
                 ...state,
                 countries: continentFilter
              } 
-             case ORDER_BY_POPULATION:
+        case ORDER_BY_POPULATION:
                  const orderByPopulation = payload === 'Lowest' ?
                  state.allCountries.sort(function(a,b){
                      if(a.population > b.papulation){
@@ -74,25 +75,25 @@ function rootReducer(state = initialState, {type, payload}){
                      ...state,
                      allCountries: orderByPopulation   
                  }
-            case GET_NAME_CUNTRIES:{
+        case GET_NAME_CUNTRIES:{
                 return{
                     ...state,
                     countries: payload
                 }
             }  
-            case GET_ACTIVITIES:{
+         case GET_ACTIVITIES:{
                 return{
                     ...state,
                     activities: payload
                 }
             }   
 
-            case POST_ACTIVITY:{
+        case POST_ACTIVITY:{
                 return{
                     ...state // solo me devuelve el estado como esta.
                 }
             }
-            case FILTER_ACTIVITY:
+        case FILTER_ACTIVITY:
                 const countriesAll = state.allCountries
                 let stateActivity=[]
                 for( let element of countriesAll){
@@ -104,11 +105,16 @@ function rootReducer(state = initialState, {type, payload}){
                         }
                     }
                 }
-            
-            console.log('state activity', stateActivity)
+             //console.log('state activity', stateActivity)
             return{
                 ...state,
-                countries: stateActivity
+                activities: stateActivity
+            }
+
+            case GET_COUNTRY_DETAIL: 
+            return{
+                ...state,
+                countryDetail: payload
             }
                 
             default:

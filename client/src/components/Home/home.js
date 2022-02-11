@@ -12,6 +12,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import FiltroPorNombre from '../FiltroPorNombre/FiltroPorNombre';
 import FiltroPorPoblacion from '../FiltroPorPoblacion/FiltroPorPoblacion';
 import FiltroPorContinente from '../FiltroPorContinente/FiltroPorContinente';
+import FiltroActividad from '../FiltroActividad/FiltroActividad';
 import Styles from './home.module.css';
 
 
@@ -58,14 +59,17 @@ export default  function Home() {
         <Link to='/activities'> Crear Actividad </Link> 
         <h1>Soy La pagina Principal de mi App Countries </h1>
       <SearchBar />
-      <button onClick={e => {handleClick(e)}}>  Volver a cargar Paises.  </button>
+      
       <FiltroPorNombre setCurrentPage={setCurrentPage} setOrden={setOrden}/>
       <FiltroPorContinente setCurrentPage={setCurrentPage}/>
       <FiltroPorPoblacion setCurrentPage={setCurrentPage} setOrder={setOrden}/>
+      <FiltroActividad setCurrentPage={setCurrentPage}/>
       <div className={Styles.paginate}> 
         <Paginado countriesPerPage={countriesPerPage} allCountries={allCountries.length} paginate={paginate}/> 
       </div>
-
+        <div>
+        <button onClick={e => {handleClick(e)}}>  Volver a cargar Paises.  </button>
+        </div>
        <div >
         <Cards currentCountries={currentCountries} />
       </div> 
