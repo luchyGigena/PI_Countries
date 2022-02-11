@@ -10,7 +10,7 @@ const [name, setName] = useState('') // yo voy a estar guardando lo que tipea el
 function handleInputhange(e){
     e.preventDefault();
     setName(e.target.value)
-    console.log(name)
+    //console.log(name)
 }
 
 function handleSubmit(e){ // aca despacho mi accion

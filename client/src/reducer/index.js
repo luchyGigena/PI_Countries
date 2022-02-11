@@ -5,7 +5,7 @@ import {GET_COUNTRIES, FILTER_CONTINENT, FILTER_ACTIVITY, GET_ACTIVITIES, ORDER_
 
 const initialState = {
     countries :[],
-    allCountries: [], // lo tengo de soporte paa que siempre tenga tops los paises
+    allCountries: [], // lo tengo de soporte paa que siempre tenga tods los paises
     activities: [],
     countryDetail: []
 }
@@ -93,22 +93,24 @@ function rootReducer(state = initialState, {type, payload}){
                     ...state // solo me devuelve el estado como esta.
                 }
             }
+
+
         case FILTER_ACTIVITY:
                 const countriesAll = state.allCountries
                 let stateActivity=[]
-                for( let element of countriesAll){
-                    if(element.activities.length !== 0){
-                        for(let el of element.activities){
+                for( let country of countriesAll){
+                    if(country.activities.length !== 0){
+                        for(let el of country.activities){
                             if(el.name === payload){
-                                stateActivity = [...stateActivity, element]
+                                stateActivity = [...stateActivity, country]
                             }
                         }
                     }
                 }
-             //console.log('state activity', stateActivity)
+            console.log('state activity', stateActivity)
             return{
                 ...state,
-                activities: stateActivity
+                countries: stateActivity
             }
 
             case GET_COUNTRY_DETAIL: 

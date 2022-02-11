@@ -3,8 +3,8 @@ import Card from '../Card/Card';
 import { Link } from 'react-router-dom';
 //import {useSelector} from 'react-redux';
 import Styles from './Cards.module.css';
-import loading from './avion.gif';
-import { useState } from 'react';
+import Loading from './Spinner-1s-200px.gif';
+
 
 export default  function Cards({currentCountries}) {
    // const allCountries = useSelector((state)=> state.countries)   
@@ -23,7 +23,7 @@ export default  function Cards({currentCountries}) {
               </React.Fragment>
           )
           
-      } ) : <img className={Styles.loading} src={loading} alt=''/>
+      } ) : <img className={Styles.loading} src={Loading} alt="" />
      
     }
 

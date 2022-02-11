@@ -60,12 +60,16 @@ export  function getNameCoutries (name){ //o name, porque es lo que voy a buscar
 }
 
 export function getActivities (){
-    return async function(dispach){
-        let res = await axios.get('http://localhost:3001/activities');
-        return dispach({
+    return async function(dispatch){
+        try{
+        const response = await axios.get("http://localhost:3001/activities")
+        dispatch({
             type: GET_ACTIVITIES,
-            payload: res.data
+            payload: response.data
         })
+        }catch(error){
+            console.log(error)
+        }
     }
 }
 
@@ -81,10 +85,13 @@ export  function postActivity (payload) { //me trae todo lo que llena el user
 
 
 export function filterActivity(payload){
+    console.log(payload)
     return{
         type: FILTER_ACTIVITY,
         payload
+    
     }
+    
 }
 
 export function getDetailCountry(id){
