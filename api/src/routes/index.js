@@ -5,7 +5,7 @@ const axios = require('axios');
 //me traigo tambien los modelos
 const {Country , Activity} = require('../db.js')
 const router = Router();
-const sequelize= require ('sequelize');
+const sequelize= require('sequelize');
 
 
 // Configurar los routers
@@ -61,12 +61,13 @@ router.get('/countries', async(req, res)=>{
     const paisesTodos = await  getCountries(); 
     if(name){
         let countriesName = await paisesTodos.filter(e=> e.name.toLowerCase().includes(name.toLocaleLowerCase()))
+        //console.log('hay countriename',countriesName)
         countriesName.length ?
         res.status(200).send(countriesName):
         res.status(404).send('Pais no encontrado')
-       // console.log(countriesName)
+       console.log(countriesName)
     }else{
-        res.status(200).send(paisesTodos)
+        res.status(200).send(paisesTodos) 
     }
 })
 

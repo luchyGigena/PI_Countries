@@ -101,7 +101,7 @@ function rootReducer(state = initialState, {type, payload}){
                 for( let country of countriesAll){
                     if(country.activities.length !== 0){
                         for(let el of country.activities){
-                            if(el.name === payload){
+                            if(el.name !== payload){
                                 stateActivity = [...stateActivity, country]
                             }
                         }

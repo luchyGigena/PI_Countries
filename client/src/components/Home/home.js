@@ -19,8 +19,10 @@ import Styles from './home.module.css';
 export default  function Home() {
     const dispatch = useDispatch()  // para usar la constante despachando mis acciones  
     const allCountries = useSelector((state)=> state.countries) // le paso el state , es lo mismo que hacer el mapStateToProps; []
-    const allactivities = useSelector((state)=> state.activities)
+  
     const [orden, setOrden] = useState('')
+   
+   
     //paginado
     const [currentPage, setCurrentPage] = useState(1) //pagina1 /pagina actual
     //const [countriesPerPage, setCountriesPerPage] = useState(9) //paises por page.
@@ -81,12 +83,15 @@ export default  function Home() {
         <button onClick={e => {handleClick(e)}}>  Volver a cargar Paises.  </button>
         </div>
        <div >
-        <Cards currentCountries={currentCountries} />
+          <Cards currentCountries={currentCountries} /> 
+          {console.log('cuurent', currentCountries)}
+            
       </div> 
       
 
       </div>
   )
+  
 };
 
 
