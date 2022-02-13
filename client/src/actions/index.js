@@ -55,7 +55,7 @@ export  function getNameCoutries (name){ //o name, porque es lo que voy a buscar
 
         }) 
         }catch(err){
-           // console.log(err)
+           
             return dispach({
                 type: GET_NAME_CUNTRIES,  
                 payload : [] //es lo que me devuelve x ruta una vez que asigno name
@@ -92,11 +92,10 @@ export  function postActivity (payload) { //me trae todo lo que llena el user
 
 
 export function filterActivity(payload){
-    console.log(payload)
+   // console.log(payload)
     return{
         type: FILTER_ACTIVITY,
         payload
-    
     }
     
 }

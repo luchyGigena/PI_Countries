@@ -1,5 +1,5 @@
 import React from 'react';
-import { filterActivity , getActivities} from '../../actions';
+import { filterActivity } from '../../actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 

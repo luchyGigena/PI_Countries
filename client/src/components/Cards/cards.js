@@ -3,7 +3,7 @@ import Card from '../Card/Card';
 import { Link } from 'react-router-dom';
 //import {useSelector} from 'react-redux';
 import Styles from './Cards.module.css';
-import Loading from './Spinner-1s-200px.gif';
+
 
 
 export default  function Cards({currentCountries}) {
@@ -13,7 +13,7 @@ export default  function Cards({currentCountries}) {
   
   return( 
   <div className={Styles.cards} >
-      {  currentCountries ? currentCountries.map(country =>{
+      {  currentCountries && currentCountries.map(country =>{
        
           return(
               <React.Fragment key={country.id} >
@@ -23,10 +23,9 @@ export default  function Cards({currentCountries}) {
               </React.Fragment>
           )
           
-      } ) : <img className={Styles.loading} src={Loading} alt="" />
+      } ) 
      
     }
-
   </div>);
 }
 

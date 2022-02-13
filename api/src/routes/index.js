@@ -65,7 +65,7 @@ router.get('/countries', async(req, res)=>{
         countriesName.length ?
         res.status(200).send(countriesName):
         res.status(404).send('Pais no encontrado')
-       console.log(countriesName)
+       //console.log(countriesName)
     }else{
         res.status(200).send(paisesTodos) 
     }

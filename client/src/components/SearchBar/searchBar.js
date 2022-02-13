@@ -16,8 +16,7 @@ function handleInputhange(e){
 function handleSubmit(e){ // aca despacho mi accion
     e.preventDefault();
     dispach(getNameCoutries(name))
-    console.log()
-
+    //console.log()
 }
   return(
     

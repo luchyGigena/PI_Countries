@@ -174,7 +174,11 @@ export default function CreateActivity() {
                         <input className={Styles.submit}
                            type="submit" value="Submit"
                            disabled={
-                           !input.name || !input.dificultad || !input.duracion || !input.temporada || !input.countries
+                           !input.name ||
+                           !input.dificultad ||
+                           !input.duracion ||  
+                           !input.temporada || 
+                           !input.countries
                            }/>
                         
         </form>
