@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { getNameCoutries } from '../../actions';
 import { useState } from 'react';
+import Styles from './SearchBar.module.css'
 
 export default function SearchBar() {
 const dispach = useDispatch()
@@ -21,7 +22,7 @@ function handleSubmit(e){ // aca despacho mi accion
   return(
     
 
-       <div>
+       <div className={Styles.searchBar}>
             <input 
             type='text'
             placeholder='Buscar Pais'

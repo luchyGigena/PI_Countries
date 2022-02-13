@@ -38,15 +38,12 @@ export default  function Home() {
     const indexOfLastCountry = currentPage * countriesPerPage // 9
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage // 0
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
-    
+
     const paginate =(pageNumber)=>{ //esta cons me va ayudar al renderizado
       setCurrentPage(pageNumber)
     }
 
    
-
-
-
     // traigo paises cuando el componente se monta
     useEffect(()=>{ // esto me reemplaza el mapdispach
          dispatch(getAllCountries()) 
@@ -68,17 +65,12 @@ export default  function Home() {
         <h1> Countrie's App </h1>
 
       <SearchBar />
-      
       <FiltroPorNombre setCurrentPage={setCurrentPage} setOrden={setOrden}/>
       <FiltroPorContinente setCurrentPage={setCurrentPage}/>
       <FiltroPorPoblacion setCurrentPage={setCurrentPage} setOrder={setOrden}/>
       <FiltroActividad setCurrentPage={setCurrentPage} />
       
-      <div>
-        <Link to='/activities'> 
-        <button>Create Activity</button>
-         </Link> 
-         </div>
+     
 
       <div className={Styles.paginate}> 
         <Paginado countriesPerPage={countriesPerPage} allCountries={allCountries.length} paginate={paginate}/> 
@@ -88,8 +80,8 @@ export default  function Home() {
         </div>
        <div >
 
-         { loading ? <img className={Styles.loading} src={Loader} alt="" /> :
-         <Cards currentCountries={currentCountries} />  }
+         { loading ? <img  src={Loader} alt="loading" /> :
+         <Cards currentCountries={currentCountries} /> }
           
       </div> 
       

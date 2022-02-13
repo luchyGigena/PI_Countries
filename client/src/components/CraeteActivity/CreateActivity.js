@@ -104,7 +104,7 @@ export default function CreateActivity() {
                     <input
                      type='text' value={input.name}
                      name='name' placeholder="Activity name..."
-                      onChange={handleChange} />
+                     onChange={handleChange} />
                       {error.name && (
                           <p className={Styles.error}>{error.name}</p>
                       )}
