@@ -23,7 +23,7 @@ export default function FiltroActividad({setCurrentPage }) {
       <select className={Styles.activityFilter} onChange={(e)=> handleFilterActivity(e)}>
       <option selected="true" disabled="disabled">Select Activity</option>
       {
-       console.log('act',activity),
+       //console.log('act',activity),
 
         activity?.map(act => {
           return(

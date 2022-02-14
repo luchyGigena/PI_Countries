@@ -3,9 +3,10 @@ const { Router } = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 const axios = require('axios');
 //me traigo tambien los modelos
-const {Country , Activity} = require('../db.js')
+const {Country , Activity} = require('../db.js');
+const { route } = require('../app.js');
 const router = Router();
-const sequelize= require('sequelize');
+//const sequelize= require('sequelize');
 
 
 // Configurar los routers
@@ -15,6 +16,7 @@ const getCountries = async() => {
     const countriesTable = await Country.findAll({
         include: [{model: Activity}],
     })
+
     if(countriesTable.length === 0){
         try {
             const api = await axios.get("https://restcountries.com/v3/all");
@@ -71,22 +73,22 @@ router.get('/countries', async(req, res)=>{
     }
 })
 
-router.get('/countries/:idPais', async(req, res)=>{
-    const {idPais} = req.params
+ router.get('/countries/:idPais', async(req, res)=>{
+   const {idPais} = req.params
     try{
-        const getPais = await Country.findByPk(idPais.toUpperCase(),{
-            include: {
+         const getPais = await Country.findByPk(idPais.toUpperCase(),{
+             include: {
                 model: Activity  
-              }
-        })
-        if(getPais){
-            res.send(getPais)
-        }else{
-            res.send('Pais no encontrado')
+               }
+         })
+         if(getPais){
+             res.send(getPais)
+         }else{
+           res.send('Pais no encontrado')
         }
-    }catch(error){
-        console.log(error)
-    }
+     }catch(error){
+         console.log(error)
+     }
 })
 
 
@@ -94,9 +96,7 @@ router.get('/countries/:idPais', async(req, res)=>{
 //POST
 router.post('/activities', async(req, res)=> {
     const {name, dificultad , duracion, temporada, countries} = req.body;
-
     try{
-
        if(name && dificultad && duracion && temporada && countries){
          const dbCountries = await Country.findAll({
              where :{
@@ -112,30 +112,58 @@ router.post('/activities', async(req, res)=> {
                     temporada,
                     countries
                 })
-                 activityCreated.addCountries(dbCountries)
+                 activityCreated.addCountries(dbCountries) //aca relacione en el fortm 
                 res.status(200).send(activityCreated)
 
             }else{
-                res.status(400).send('Pais no encontrado')
+                res.status(400).send('Activity not created')
             }
 
         }else{
-            res.status(400).send('idiota')
+            res.status(400).send('Noy found')
         }
     }catch(error){
         return res.status(400).send({msj: 'Cration Failed'})
     }
 })
 
-router.get('/activities', async(req,res)=>{
-    try{
-        const activities= await Activity.findAll();
-        return res.status(200).send(activities)
-    }catch(error){
-        return res.status(400).send(error);
-    }
+
+
+
+router.get('/activities', (req,res)=>{
+    Activity.findAll().then((actividades)=>{
+        if(actividades){
+            return res.send(actividades)
+        }else{
+            return res.send('No hay actividades')
+        }
+    }).catch((error)=>{
+        console.log(error)
+    })
+
+    // try{
+    //     const activities= await Activity.findAll();
+    //     return res.status(200).send(activities)
+    // }catch(error){
+    //     return res.status(400).send(error);
+    // }
 
 })
+
+
+// router.get('/countries/:name', async(req,res)=>{
+//     const {name} = req.params
+//      const pais = await Country.findOne({
+//         where:{
+//             name : name
+//         }
+//     })
+//     if(pais){
+//         return res.send(pais)
+//     }else{
+//         return res.send('no existe ese pais')
+//     }
+//     })
 
 
 

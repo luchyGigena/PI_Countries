@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // importo acctiones de postactivity y get activities
-import { getActivities, postActivity ,getAllCountries } from '../../actions';
+import {postActivity ,getAllCountries } from '../../actions';
 import {Link} from 'react-router-dom';
 //import { useHistory } from "react-router-dom";
 import Styles from './CreateActivity.module.css'
@@ -34,10 +34,9 @@ export default function CreateActivity() {
     }
 
     useEffect(()=>{
-        
         dispatch(getAllCountries())
         //dispatch(getActivities())
-    },[])
+    })
 
     function handleChange(e){
         setInput({

@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import React  from 'react';
 import {useState , useEffect} from 'react';
 import {useDispatch , useSelector } from 'react-redux';
-import {Link} from "react-router-dom";
+
 //import la accion
 import {getAllCountries, getActivities} from '../../actions'
 //import components
@@ -63,8 +63,8 @@ export default  function Home() {
   return( 
     <div>
         <h1> Countrie's App </h1>
-
-      <SearchBar />
+       
+       <SearchBar /> 
       <FiltroPorNombre setCurrentPage={setCurrentPage} setOrden={setOrden}/>
       <FiltroPorContinente setCurrentPage={setCurrentPage}/>
       <FiltroPorPoblacion setCurrentPage={setCurrentPage} setOrder={setOrden}/>
@@ -80,7 +80,7 @@ export default  function Home() {
         </div>
        <div >
 
-         { loading ? <img  src={Loader} alt="loading" /> :
+         { loading ? <img  src={Loader} alt="loading"/> :
          <Cards currentCountries={currentCountries} /> }
           
       </div> 

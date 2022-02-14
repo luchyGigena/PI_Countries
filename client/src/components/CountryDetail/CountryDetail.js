@@ -8,6 +8,7 @@ import Styles from './CountryDetail.module.css'
 
 
 
+
 export default function CountryDetail() {
     const dispatch = useDispatch()
     const {id} = useParams()
@@ -22,11 +23,10 @@ export default function CountryDetail() {
     },[dispatch, id])
 
 
-
     return(
         <div className={Styles.detailContainer}>
 
-<h1>Country Detail</h1>
+        <h1 className={Styles.details}>Country Detail</h1>
 
             <div className={Styles.header}>
                 <Link to="/home">
@@ -36,12 +36,12 @@ export default function CountryDetail() {
             </div>
             
             {
-                console.log('detail',detail),
+               
             
             Object.keys(detail).length > 0 ?  //me devuleve un array de la propiedad detail, sus posiciones
                 <div className={Styles.countryContainer}>
                     <div>
-                        <img className={Styles.flag} src={detail.flag} alt="flag Image" />
+                        <img className={Styles.flag} src={detail.flag} alt="flag Ima" />
                     </div>
                     <div className={Styles.details}>
                         <h1>{detail.name} ({detail.id})</h1>
@@ -60,9 +60,17 @@ export default function CountryDetail() {
                                 <h4>Duration: {activity.duracion} minutes</h4>
                                 <h4>Season: {activity.temporada}</h4>
                             </div>
-                        ) : <h3>There is no activities</h3>}
+                        ) : (
+                            <div>
+                        <h3>There are no activities</h3>
+                        
+                        <Link to='/activities'> 
+                        <button className={Styles.btnBack} >Create Activity</button>
+                        </Link> 
+                        </div>)
+                      }
                     </div>
-                </div> : <p>Country Not Found</p>
+                </div> : <p>Buscando...</p>
         }
         </div>
     )
