@@ -4,7 +4,7 @@ import Styles from './Card.module.css'
 export default function Card({id, flag, name, continent}) {
 
   return (
-    
+
       <div className={Styles.card} key={id}>
     
       <img src={flag} alt='Flag Img' />

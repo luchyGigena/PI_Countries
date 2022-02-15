@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config(); ///si no esta instalado no me va a funcionar las variables de entorno
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');

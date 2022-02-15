@@ -55,13 +55,13 @@ export  function getNameCoutries (name){ //o name, porque es lo que voy a buscar
 
         }) 
         }catch(err){
-           
+          
             return dispach({
                 type: GET_NAME_CUNTRIES,  
                 payload : [] //es lo que me devuelve x ruta una vez que asigno name
     
-            })
-            //console.log('que es res',res.data, res.status)
+         })
+            // //console.log('que es res',res.data, res.status)
         }
     }
 }

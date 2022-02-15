@@ -11,3 +11,9 @@
 .link {
   text-decoration: none;
 }
+.loading {
+  position: relative;
+  padding: 50px;
+  width: 30vw;
+  height: 30vh;
+}

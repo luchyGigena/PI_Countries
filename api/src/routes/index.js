@@ -2,11 +2,9 @@ const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const axios = require('axios');
-//me traigo tambien los modelos
 const {Country , Activity} = require('../db.js');
-const { route } = require('../app.js');
+//const { Sequelize } = require('sequelize');
 const router = Router();
-//const sequelize= require('sequelize');
 
 
 // Configurar los routers
@@ -37,7 +35,7 @@ const getCountries = async() => {
             await Country.findOrCreate({
                 where: {
                     id: e.id,
-                    name: e.name,
+                    name: e.name.toLowerCase(),
                     flag: e.flag,
                     continent: e.continent,
                     capital: e.capital ? e.capital[0] : "Capital not found",
@@ -52,24 +50,29 @@ const getCountries = async() => {
             console.log(error);
         }
     }else{
-        return (countriesTable);
+        return countriesTable;
     }
 }
 
 
 //aca unifico /countries con la peticion por ? de name
-router.get('/countries', async(req, res)=>{
+router.get('/countries', async (req, res)=>{
     const {name}= req.query //(pregunto si e un nombre pasado por ?)
-    const paisesTodos = await  getCountries(); 
-    if(name){
-        let countriesName = await paisesTodos.filter(e=> e.name.toLowerCase().includes(name.toLocaleLowerCase()))
-        //console.log('hay countriename',countriesName)
-        countriesName.length ?
-        res.status(200).send(countriesName):
-        res.status(404).send('Pais no encontrado')
-       //console.log(countriesName)
-    }else{
-        res.status(200).send(paisesTodos) 
+    const allCountries = await getCountries();
+    if(name === undefined ||  !name){
+       
+       return  res.status(200).send(allCountries)
+    }else if(name){
+        const country = await Country.findAll({
+            where:{
+                name : name.toLowerCase(),
+            }
+        })
+        if(country.length !== 0){
+            res.status(200).json(country)
+        }else{
+            res.status(404).json('Country not found')
+        }
     }
 })
 
@@ -81,8 +84,8 @@ router.get('/countries', async(req, res)=>{
                 model: Activity  
                }
          })
-         if(getPais){
-             res.send(getPais)
+         if(getPais !== null){
+           return res.send(getPais)
          }else{
            res.send('Pais no encontrado')
         }
@@ -94,7 +97,7 @@ router.get('/countries', async(req, res)=>{
 
 
 //POST
-router.post('/activities', async(req, res)=> {
+router.post('/activities', async (req, res)=> {
     const {name, dificultad , duracion, temporada, countries} = req.body;
     try{
        if(name && dificultad && duracion && temporada && countries){
@@ -130,40 +133,16 @@ router.post('/activities', async(req, res)=> {
 
 
 
-router.get('/activities', (req,res)=>{
-    Activity.findAll().then((actividades)=>{
-        if(actividades){
-            return res.send(actividades)
-        }else{
-            return res.send('No hay actividades')
-        }
-    }).catch((error)=>{
-        console.log(error)
-    })
-
-    // try{
-    //     const activities= await Activity.findAll();
-    //     return res.status(200).send(activities)
-    // }catch(error){
-    //     return res.status(400).send(error);
-    // }
-
+router.get('/activities', async (req,res)=>{
+      try{
+         const activities= await Activity.findAll();
+       return res.status(200).send(activities)
+     }catch(error){
+         return res.status(400).send(error);
+     }
 })
 
 
-// router.get('/countries/:name', async(req,res)=>{
-//     const {name} = req.params
-//      const pais = await Country.findOne({
-//         where:{
-//             name : name
-//         }
-//     })
-//     if(pais){
-//         return res.send(pais)
-//     }else{
-//         return res.send('no existe ese pais')
-//     }
-//     })
 
 
 
