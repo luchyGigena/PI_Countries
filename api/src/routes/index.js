@@ -76,6 +76,7 @@ router.get('/countries', async (req, res)=>{
     }
 })
 
+
  router.get('/countries/:idPais', async(req, res)=>{
    const {idPais} = req.params
     try{

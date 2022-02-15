@@ -35,8 +35,8 @@ export default function CreateActivity() {
 
     useEffect(()=>{
         dispatch(getAllCountries())
-        //dispatch(getActivities())
-    })
+     
+    },[])
 
     function handleChange(e){
         setInput({
@@ -78,7 +78,7 @@ export default function CreateActivity() {
 
     function handleSubmit(e){
         //e.preventDefault(),
-        console.log(input)
+       // console.log(input)
         dispatch(postActivity(input))
         alert('Activity Created')
         setInput({
