@@ -1,6 +1,7 @@
 import React from 'react';
 import { FilterContinent } from '../../actions';
 import {  useDispatch } from 'react-redux';
+import Styles from './FiltroPorContinente.module.css'
 
 export default function FiltroPorContinente({setCurrentPage}) {
 
@@ -14,7 +15,7 @@ export default function FiltroPorContinente({setCurrentPage}) {
 
   return (
   <div>
-      <select onChange={(e)=> handleFilter(e)} >
+      <select onChange={(e)=> handleFilter(e)} className={Styles.continentFilter} >
       <option selected="true" disabled="disabled">Select Continent</option>
           {/* value === a lo que me trae la api*/}
           <option value='All'>All</option>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { orderByPopulation } from '../../actions';
 import { useDispatch } from 'react-redux';
+import Styles from './FiltroPorPoblacion.module.css'
 
 export default function FiltroPorPoblacion({setCurrentPage , setOrder}) {
   const dispatch = useDispatch()
@@ -15,8 +16,8 @@ export default function FiltroPorPoblacion({setCurrentPage , setOrder}) {
   }
 
   return (
-  <div>
-      <select onChange={e=> handleOrderPopulation(e)}>
+  <div >
+      <select onChange={e=> handleOrderPopulation(e)} className={Styles.populationFilter}>
         <option selected="true" disabled="disabled">Population</option>
           <option value='Highest'> Highest </option>
           <option value='Lowest'> Lowest </option>

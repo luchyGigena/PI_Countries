@@ -64,19 +64,20 @@ export default  function Home() {
     <div>
         <h1> Countrie's App </h1>
        
-       <SearchBar /> 
-      <FiltroPorNombre setCurrentPage={setCurrentPage} setOrden={setOrden}/>
-      <FiltroPorContinente setCurrentPage={setCurrentPage}/>
-      <FiltroPorPoblacion setCurrentPage={setCurrentPage} setOrder={setOrden}/>
-      <FiltroActividad setCurrentPage={setCurrentPage} />
-      
-     
-
+       <div className={Styles.filterContainer}>
+       <div className={Styles.filters}>
+        <FiltroPorNombre setCurrentPage={setCurrentPage} setOrden={setOrden}/>
+        <FiltroPorContinente setCurrentPage={setCurrentPage}/>
+        <FiltroPorPoblacion setCurrentPage={setCurrentPage} setOrder={setOrden}/>
+        <FiltroActividad setCurrentPage={setCurrentPage} />
+        </div>
+      </div>
+      <SearchBar />  
       <div className={Styles.paginate}> 
         <Paginado countriesPerPage={countriesPerPage} allCountries={allCountries.length} paginate={paginate}/> 
       </div>
         <div>
-        <button onClick={e => {handleClick(e)}}>  Volver a cargar Paises.  </button>
+        <button onClick={e => {handleClick(e)}} className={Styles.btnBack}>  Volver a cargar Paises.  </button>
         </div>
        <div >
 
