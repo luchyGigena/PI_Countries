@@ -19,8 +19,8 @@ import Styles from './home.module.css';
 
 export default  function Home() {
   const [loading, setloading] =useState(true) // para el loader
-    const dispatch = useDispatch()  // para usar la constante despachando mis acciones  
-    const allCountries = useSelector((state)=> state.countries) // le paso el state , es lo mismo que hacer el mapStateToProps; []
+    const dispatch = useDispatch() 
+    const allCountries = useSelector((state)=> state.countries) 
   
     const [orden, setOrden] = useState('')
    

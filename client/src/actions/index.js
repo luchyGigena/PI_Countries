@@ -11,7 +11,7 @@ export const FILTER_ACTIVITY = "FILTER_ACTIVITY"
 export const POST_ACTIVITY = "POST_ACTIVITY"
 
 
-//aca es donde conecto mi back con mi front
+
 export function getAllCountries(){
     return async function(dispach){
         let response = await axios.get("http://localhost:3001/countries")

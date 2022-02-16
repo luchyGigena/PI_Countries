@@ -54,7 +54,7 @@ function rootReducer(state = initialState, {type, payload}){
         case ORDER_BY_POPULATION:
                  const orderByPopulation = payload === 'Lowest' ?
                  state.allCountries.sort(function(a,b){
-                     if(a.population > b.papulation){
+                     if(a.population > b.population){
                          return 1
                      }
                      if(b.population > a.population){
@@ -108,7 +108,7 @@ function rootReducer(state = initialState, {type, payload}){
                         }
                     }
                 }
-            console.log('state activity', stateActivity)
+            //console.log('state activity', stateActivity)
             return{
                 ...state,
                 countries: stateActivity
