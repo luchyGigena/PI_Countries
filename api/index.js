@@ -18,7 +18,7 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { conn } = require('./src/db.js'); //me lo importe de archivo db y conecta y sincronoza mi bd
+const { conn } = require('./src/db.js'); 
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {

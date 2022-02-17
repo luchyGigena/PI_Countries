@@ -56,7 +56,7 @@ describe('Activity model', () => {
       it('should create an activity if all parameters are valid',(done)=>{
         Activity.create({id:4, name:'running',dificultad:2, duracion:2, temporada:'Primavera'})
         .then(() => Activity.findAll())
-        .then(results => (results.length===1)?done():new Error('wrong'))//expect(results.length).to.be.equal(1)) //what?
+        .then(results => (results.length===1)?done():new Error('wrong'))//expect(results.length).to.be.equal(1)) //?
         //.catch(() => console.log('it did not work'))
       });
     });

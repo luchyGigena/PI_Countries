@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 //import { useHistory } from "react-router-dom";
 import Styles from './CreateActivity.module.css'
 
-// funcion para validar mi form
+
 
 
 
@@ -35,7 +35,6 @@ export default function CreateActivity() {
 
     useEffect(()=>{
         dispatch(getAllCountries())
-     
     },[])
 
     function handleChange(e){
@@ -63,12 +62,18 @@ export default function CreateActivity() {
     }
 
     function handleSelect(e){
+         if(input.countries.find((p) => p ===  e.target.value)){
+            return 
+         }   
+
         setInput({
             ...input,
             countries: [...input.countries, e.target.value]
         })
-        console.log(input)
+        
     }
+
+
     function handleDelete(el){
         setInput({
             ...input,

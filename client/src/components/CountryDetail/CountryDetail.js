@@ -36,8 +36,6 @@ export default function CountryDetail() {
             </div>
             
             {
-               
-            
             Object.keys(detail).length > 0 ?  //me devuleve un array de la propiedad detail, sus posiciones
                 <div className={Styles.countryContainer}>
                     <div>

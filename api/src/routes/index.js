@@ -145,6 +145,21 @@ router.get('/activities',  async (req,res)=>{
     
 })
 
+// router.post('/createCountry' , async( req, res)=>{
+//     const {name} = req.body
+
+//     const creacion = await Country.create({
+//         id: 'AGT',
+//         name: name,
+//         flag: 'https://flagcdn.com/aw.svg',
+//         continent: 'Europe',
+//         capital: 'Vacio'
+       
+
+//     }) 
+//     res.json(creacion)
+// })
+
 
 
 
